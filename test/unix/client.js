@@ -29,6 +29,12 @@ async function run(){
         
         ipc.config.id ='testClient';
         ipc.config.retry = 900;
+        if (fs.existsSync('/data/data/com.termux')) {
+            ipc.config.socketRoot = '/data/data/com.termux/tmp/';
+            if (!fs.existsSync(ipc.config.socketRoot)) {
+                fs.mkdirSync(ipc.config.socketRoot, { recursive: true });
+            }
+        }
 
         let serverID='';
         let serverMessage='';
@@ -96,7 +102,7 @@ async function run(){
 
         ipc.connectTo(
             'unixServerSync',
-            '/tmp/app.unixServerSync',
+            ipc.config.socketRoot+'app.unixServerSync',
             function open(){
                 ipc.of.unixServerSync.on(
                     'connect',

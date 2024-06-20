@@ -15,13 +15,19 @@ setTimeout(
 ipc.config.id = 'unixClient';
 ipc.config.retry= 600;
 ipc.config.silent=true;
+if (fs.existsSync('/data/data/com.termux')) {
+    ipc.config.socketRoot = '/data/data/com.termux/tmp/';
+    if (!fs.existsSync(ipc.config.socketRoot)) {
+        fs.mkdirSync(ipc.config.socketRoot, { recursive: true });
+    }
+}
 
 ipc.connectTo(
     'testWorld',
-    '/tmp/app.testWorld'
+    ipc.config.socketRoot+'app.testWorld'
 );
 
 ipc.connectTo(
     'testWorld2',
-    '/tmp/app.testWorld'
+    ipc.config.socketRoot+'app.testWorld'
 );
