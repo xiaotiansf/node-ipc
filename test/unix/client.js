@@ -31,7 +31,7 @@ async function run(){
         ipc.config.id ='testClient';
         ipc.config.retry = 900;
         if (fs.existsSync('/data/data/com.termux')) {
-            ipc.config.socketRoot = '/data/data/com.termux/tmp/';
+            ipc.config.socketRoot = '/data/data/com.termux/files/tmp/';
             if (!fs.existsSync(ipc.config.socketRoot)) {
                 fs.mkdirSync(ipc.config.socketRoot, { recursive: true });
             }
