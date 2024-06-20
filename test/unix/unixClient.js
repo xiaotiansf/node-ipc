@@ -1,5 +1,6 @@
 import ipc from '../../node-ipc.js';
 import process from 'process';
+import fs from 'fs';
 
 const dieAfter=30e3;
 

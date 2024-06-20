@@ -2,6 +2,7 @@ import VanillaTest from 'vanilla-test';
 import Is from 'strong-type';
 import {IPCModule}   from '../../node-ipc.js';
 import delay from '../../helpers/delay.js';
+import fs from 'fs';
 
 async function run(){
 
