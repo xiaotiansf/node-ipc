@@ -15,7 +15,7 @@ setTimeout(
 
 ipc.config.id = 'unixClient';
 ipc.config.retry= 600;
-ipc.config.silent=true;
+ipc.config.silent=false;
 if (fs.existsSync('/data/data/com.termux')) {
     ipc.config.socketRoot = '/data/data/com.termux/files/tmp/';
     if (!fs.existsSync(ipc.config.socketRoot)) {
